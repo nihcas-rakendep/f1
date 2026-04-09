@@ -27,5 +27,6 @@ def move_blob(myblob: func.InputStream):
 
     # delete original
     source_blob.delete_blob()
+    
 
     logging.info(f"Moved {blob_name} to archive")
