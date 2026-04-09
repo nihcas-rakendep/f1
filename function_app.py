@@ -5,7 +5,7 @@ from azure.storage.blob import BlobServiceClient
 
 app = func.FunctionApp()
 
-@app.blob_trigger(arg_name="myblob", path="input/{name}", connection="AzureWebJobsStorage")
+@app.blob_trigger(arg_name="myblob", path="input/{name}", connection="AzureWebJobsStorage", source="EventGrid")
 def move_blob(myblob: func.InputStream):
     logging.info(f"Moving blob: {myblob.name}")
 
@@ -27,6 +27,6 @@ def move_blob(myblob: func.InputStream):
 
     # delete original
     source_blob.delete_blob()
-    
+
 
     logging.info(f"Moved {blob_name} to archive")
