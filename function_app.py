@@ -30,3 +30,7 @@ def move_blob(myblob: func.InputStream):
 
 
     logging.info(f"Moved {blob_name} to archive")
+
+@app.route(route="ping")
+def ping(req: func.HttpRequest) -> func.HttpResponse:
+    return func.HttpResponse("ok")
